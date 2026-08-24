@@ -4,7 +4,8 @@ export const SCENES: Record<string, Scene> = {
   DAILY_ROUTINES: { en: 'Daily Routines', zh: '生活起居', theme: 'daily_routines', color: '#D4A373' }, // Warm Sand
   DAILY_SELF_CARE: { en: 'Daily Self-care', zh: '日常自理', theme: 'daily_self_care', color: '#A3B1C6' }, // Slate Blue
   PLAY_OUTDOORS: { en: 'Play & Outdoors', zh: '游戏与户外', theme: 'play_outdoors', color: '#E9C46A' }, // Warm Ochre
-  BODY_MOVEMENT: { en: 'Body & Movement', zh: '身体与动作', theme: 'body_movement', color: '#A7B899' } // Sage Green
+  BODY_MOVEMENT: { en: 'Body & Movement', zh: '身体与动作', theme: 'body_movement', color: '#A7B899' }, // Sage Green
+  CLEAN_ORGANIZE: { en: 'Clean & Organize', zh: '整理与家务', theme: 'clean_organize', color: '#8FC1B5' } // Soft Teal
 };
 
 export const vocabularyData: VocabularyItem[] = [
@@ -18,7 +19,7 @@ export const vocabularyData: VocabularyItem[] = [
     id: '2', scene: SCENES.DAILY_ROUTINES, word: `open`, meaning: `打开`, level: 'L1',
     l2: { en: `Open your eyes!`, zh: `打开门！` },
     l3: [`Open the window.`, `Open the book.`, `Open the door.`],
-    l4: [`Open the book to the next page.`, `Open the box when Mommy says, "Go!"`, `Open the window before we read the story.`]
+    l4: [`Open the book to the next page.`, `Open the box when Mommy says, “Go!”`, `Open the window before we read the story.`]
   },
   {
     id: '3', scene: SCENES.DAILY_ROUTINES, word: `close`, meaning: `关闭`, level: 'L1',
@@ -72,17 +73,17 @@ export const vocabularyData: VocabularyItem[] = [
     id: '11', scene: SCENES.DAILY_ROUTINES, word: `turn on`, meaning: `打开（电器）`, level: 'L2',
     l2: { en: `Turn on the light!`, zh: `打开灯！` },
     l3: [`Turn on the lamp.`, `Turn on the fan.`, `Turn on the music.`],
-    l4: [`Turn on the light before you start reading.`, `Turn on the music when Mommy says, "Go!"`, `Turn on the fan if you feel hot.`]
+    l4: [`Turn on the light before you start reading.`, `Turn on the music when Mommy says, “Go!”`, `Turn on the fan if you feel hot.`]
   },
   {
     id: '12', scene: SCENES.DAILY_ROUTINES, word: `turn off`, meaning: `关闭（电器）`, level: 'L2',
     l2: { en: `Turn off the light!`, zh: `关灯！` },
     l3: [`Turn off the lamp.`, `Turn off the fan.`, `Turn off the music.`],
-    l4: [`Turn off the light before you go to bed.`, `Turn off the music when Mommy says, "Stop!"`, `Turn off the fan when you leave the room.`]
+    l4: [`Turn off the light before you go to bed.`, `Turn off the music when Mommy says, “Stop!”`, `Turn off the fan when you leave the room.`]
   },
   {
     id: '13', scene: SCENES.DAILY_ROUTINES, word: `rub`, meaning: `揉；擦`, level: 'L1',
-    l2: { en: `Rub your eyes!`, zh: `揉揉手！` },
+    l2: { en: `Rub your eyes!`, zh: `搓搓手！` },
     l3: [`Rub your hands together.`, `Rub your eyes gently.`, `Rub the towel on your face.`],
     l4: [`Rub your hands together when they feel cold.`, `Rub your face with the towel after you wash it.`, `Rub your hands and then dry them with the towel.`]
   },
@@ -131,7 +132,7 @@ export const vocabularyData: VocabularyItem[] = [
   {
     id: '21', scene: SCENES.DAILY_SELF_CARE, word: `smell`, meaning: `闻`, level: 'L1',
     l2: { en: `Smell the soup!`, zh: `闻闻汤！` },
-    l3: [`Smell the flower.`, `Smell the food.`, `Smell the soup.`],
+    l3: [`Smell the flower.`, `Smell the food.`, `Smell the soap.`],
     l4: [`Smell the soup before you taste it.`, `Smell the flower and tell me if you like it.`, `Smell the food and guess what we are going to eat.`]
   },
   {
@@ -174,7 +175,7 @@ export const vocabularyData: VocabularyItem[] = [
     id: '28', scene: SCENES.DAILY_SELF_CARE, word: `blow`, meaning: `吹`, level: 'L1',
     l2: { en: `Blow on the soup!`, zh: `吹吹汤！` },
     l3: [`Blow on your food.`, `Blow on the bubble.`, `Blow out the candle.`],
-    l4: [`Blow on the soup before you taste it.`, `Blow three times to make the bubble bigger.`, `Blow out the candle when Mommy says, "Go!"`]
+    l4: [`Blow on the soup before you taste it.`, `Blow three times to make the bubble bigger.`, `Blow out the candle when Mommy says, “Go!”`]
   },
   {
     id: '29', scene: SCENES.DAILY_SELF_CARE, word: `chew`, meaning: `咀嚼`, level: 'L2',
@@ -186,7 +187,7 @@ export const vocabularyData: VocabularyItem[] = [
     id: '30', scene: SCENES.DAILY_SELF_CARE, word: `pass`, meaning: `递；传递`, level: 'L2',
     l2: { en: `Pass the cup!`, zh: `把杯子递过来！` },
     l3: [`Pass the spoon.`, `Pass the ball.`, `Pass it to Mommy.`],
-    l4: [`Pass the cup to Daddy when he asks for it.`, `Pass the ball to Mommy and then sit down.`, `Pass the red block to me when I say, "Go!"`]
+    l4: [`Pass the cup to Daddy when he asks for it.`, `Pass the ball to Mommy and then sit down.`, `Pass the red block to me when I say, “Go!”`]
   },
   {
     id: '31', scene: SCENES.DAILY_SELF_CARE, word: `zip`, meaning: `拉拉链`, level: 'L2',
@@ -196,7 +197,7 @@ export const vocabularyData: VocabularyItem[] = [
   },
   {
     id: '32', scene: SCENES.DAILY_SELF_CARE, word: `button`, meaning: `扣纽扣`, level: 'L3',
-    l2: { en: `Button your shirt!`, zh: `扣好衬衫纽扣！` },
+    l2: { en: `Button your shirt!`, zh: `扣好外套纽扣！` },
     l3: [`Button your coat.`, `Button the coat.`, `Button the top button.`],
     l4: [`Button your coat before you go outside.`, `Button your shirt one button at a time.`, `Button the top button and then zip your coat.`]
   },
@@ -252,17 +253,17 @@ export const vocabularyData: VocabularyItem[] = [
     id: '41', scene: SCENES.PLAY_OUTDOORS, word: `run`, meaning: `跑`, level: 'L1',
     l2: { en: `Run to Mommy!`, zh: `跑向妈妈！` },
     l3: [`Run fast.`, `Run slowly.`, `Run to me.`],
-    l4: [`Run to Mommy when she calls you.`, `Run around the chair three times.`, `Run to the door and come back when I say, "Go!"`]
+    l4: [`Run to Mommy when she calls you.`, `Run around the chair three times.`, `Run to the door and come back when I say, “Go!”`]
   },
   {
     id: '42', scene: SCENES.PLAY_OUTDOORS, word: `jump`, meaning: `跳`, level: 'L1',
     l2: { en: `Jump up!`, zh: `跳起来！` },
     l3: [`Jump high.`, `Jump over the line.`, `Jump on the mat.`],
-    l4: [`Jump over the line three times.`, `Jump to Mommy when I say, "Go!"`, `Jump over the blocks without touching them.`]
+    l4: [`Jump over the line three times.`, `Jump to Mommy when I say, “Go!”`, `Jump over the blocks without touching them.`]
   },
   {
     id: '43', scene: SCENES.PLAY_OUTDOORS, word: `push`, meaning: `推`, level: 'L1',
-    l2: { en: `Push the car!`, zh: `推车子！` },
+    l2: { en: `Push the car!`, zh: `推箱子！` },
     l3: [`Push the box.`, `Push the door.`, `Push the button.`],
     l4: [`Push the box to Mommy.`, `Push the car across the floor.`, `Push the button when the light turns red.`]
   },
@@ -270,7 +271,7 @@ export const vocabularyData: VocabularyItem[] = [
     id: '44', scene: SCENES.PLAY_OUTDOORS, word: `tickle`, meaning: `挠痒`, level: 'L1',
     l2: { en: `Tickle Mommy!`, zh: `挠挠妈妈！` },
     l3: [`Tickle Daddy.`, `Tickle Teddy.`, `Tickle my hand.`],
-    l4: [`Tickle Mommy when she says, "Go!"`, `Tickle Teddy and then give him a hug.`, `Tickle my hand three times and stop.`]
+    l4: [`Tickle Mommy when she says, “Go!”`, `Tickle Teddy and then give him a hug.`, `Tickle my hand three times and stop.`]
   },
   {
     id: '45', scene: SCENES.PLAY_OUTDOORS, word: `catch`, meaning: `接住；抓住`, level: 'L2',
@@ -282,13 +283,13 @@ export const vocabularyData: VocabularyItem[] = [
     id: '46', scene: SCENES.PLAY_OUTDOORS, word: `throw`, meaning: `扔；投`, level: 'L2',
     l2: { en: `Throw the ball!`, zh: `扔球！` },
     l3: [`Throw the ball to Mommy.`, `Throw the ball high.`, `Throw the ball into the basket.`],
-    l4: [`Throw the red ball to Mommy.`, `Throw the ball into the basket three times.`, `Throw the ball when I say, "Go!"`]
+    l4: [`Throw the red ball to Mommy.`, `Throw the ball into the basket three times.`, `Throw the ball when I say, “Go!”`]
   },
   {
     id: '47', scene: SCENES.PLAY_OUTDOORS, word: `kick`, meaning: `踢`, level: 'L1',
     l2: { en: `Kick the ball!`, zh: `踢球！` },
     l3: [`Kick the ball forward.`, `Kick the ball to Daddy.`, `Kick the ball gently.`],
-    l4: [`Kick the ball into the goal.`, `Kick the red ball to Daddy.`, `Kick the ball three times when I say, "Go!"`]
+    l4: [`Kick the ball into the goal.`, `Kick the red ball to Daddy.`, `Kick the ball three times when I say, “Go!”`]
   },
   {
     id: '48', scene: SCENES.PLAY_OUTDOORS, word: `roll`, meaning: `滚动`, level: 'L1',
@@ -300,7 +301,7 @@ export const vocabularyData: VocabularyItem[] = [
     id: '49', scene: SCENES.PLAY_OUTDOORS, word: `hide`, meaning: `躲藏`, level: 'L1',
     l2: { en: `Hide behind the sofa!`, zh: `躲在沙发后面！` },
     l3: [`Hide behind the chair.`, `Hide under the table.`, `Hide the teddy bear.`],
-    l4: [`Hide behind the door until Mommy finds you.`, `Hide the teddy bear under the blanket.`, `Hide and come out when I say, "Come out!"`]
+    l4: [`Hide behind the door until Mommy finds you.`, `Hide the teddy bear under the blanket.`, `Hide and come out when I say, “Come out!”`]
   },
   {
     id: '50', scene: SCENES.PLAY_OUTDOORS, word: `press`, meaning: `按压`, level: 'L1',
@@ -312,7 +313,7 @@ export const vocabularyData: VocabularyItem[] = [
     id: '51', scene: SCENES.PLAY_OUTDOORS, word: `climb`, meaning: `爬；攀爬`, level: 'L2',
     l2: { en: `Climb up!`, zh: `爬上去！` },
     l3: [`Climb the stairs.`, `Climb the ladder.`, `Climb onto the mat.`],
-    l4: [`Climb the stairs with Mommy.`, `Climb onto the mat and sit down.`, `Climb up the ladder when Mommy says, "Go!"`]
+    l4: [`Climb the stairs with Mommy.`, `Climb onto the mat and sit down.`, `Climb up the ladder when Mommy says, “Go!”`]
   },
   {
     id: '52', scene: SCENES.PLAY_OUTDOORS, word: `slide`, meaning: `滑`, level: 'L1',
@@ -328,15 +329,15 @@ export const vocabularyData: VocabularyItem[] = [
   },
   {
     id: '54', scene: SCENES.PLAY_OUTDOORS, word: `build`, meaning: `搭建；建造`, level: 'L2',
-    l2: { en: `Build a bridge!`, zh: `搭一座桥！` },
+    l2: { en: `Build a bridge!`, zh: `搭一座高塔！` },
     l3: [`Build a house.`, `Build a tower.`, `Build with blocks.`],
     l4: [`Build a tower with five blocks.`, `Build a bridge for the toy car.`, `Build a house and put Teddy inside.`]
   },
   {
     id: '55', scene: SCENES.PLAY_OUTDOORS, word: `spin`, meaning: `旋转`, level: 'L1',
-    l2: { en: `Spin around!`, zh: `转圈圈！` },
+    l2: { en: `Spin around!`, zh: `转一圈！` },
     l3: [`Spin slowly.`, `Spin the wheel.`, `Spin around twice.`],
-    l4: [`Spin around three times and stop.`, `Spin the wheel when Mommy says, "Go!"`, `Spin the top and watch it move.`]
+    l4: [`Spin around three times and stop.`, `Spin the wheel when Mommy says, “Go!”`, `Spin the top and watch it move.`]
   },
   {
     id: '56', scene: SCENES.PLAY_OUTDOORS, word: `swing`, meaning: `荡秋千；摆动`, level: 'L1',
@@ -363,44 +364,44 @@ export const vocabularyData: VocabularyItem[] = [
     l4: [`Balance on one foot for five seconds.`, `Balance on the line without stepping off.`, `Balance like a flamingo and then switch feet.`]
   },
   {
-    id: '60', scene: SCENES.BODY_MOVEMENT, word: `dance`, meaning: `跳舞`, level: 'L1',
+    id: '60', scene: SCENES.PLAY_OUTDOORS, word: `dance`, meaning: `跳舞`, level: 'L1',
     l2: { en: `Dance with me!`, zh: `和我一起跳舞！` },
     l3: [`Dance fast.`, `Dance slowly.`, `Dance around the chair.`],
     l4: [`Dance when you hear the music.`, `Dance like a robot and then freeze.`, `Dance around the chair three times.`]
   },
   {
     id: '61', scene: SCENES.BODY_MOVEMENT, word: `clap`, meaning: `拍手`, level: 'L1',
-    l2: { en: `Clap your hands!`, zh: `拍手！` },
+    l2: { en: `Clap your hands!`, zh: `拍拍手！` },
     l3: [`Clap slowly.`, `Clap three times.`, `Clap loudly.`],
     l4: [`Clap three times when you hear the bell.`, `Clap above your head and then sit down.`, `Clap with Mommy when the music starts.`]
   },
   {
     id: '62', scene: SCENES.BODY_MOVEMENT, word: `stomp`, meaning: `跺脚`, level: 'L1',
-    l2: { en: `Stomp your feet!`, zh: `跺脚！` },
+    l2: { en: `Stomp your feet!`, zh: `跺跺脚！` },
     l3: [`Stomp slowly.`, `Stomp three times.`, `Stomp on the floor.`],
-    l4: [`Stomp three times when Mommy says, "Go!"`, `Stomp your feet and then freeze.`, `Stomp on the floor when you hear the drum.`]
+    l4: [`Stomp three times when Mommy says, “Go!”`, `Stomp your feet and then freeze.`, `Stomp on the floor when you hear the drum.`]
   },
   {
     id: '63', scene: SCENES.BODY_MOVEMENT, word: `nod`, meaning: `点头`, level: 'L1',
-    l2: { en: `Nod your head!`, zh: `点头！` },
+    l2: { en: `Nod your head!`, zh: `点点头！` },
     l3: [`Nod slowly.`, `Nod three times.`, `Nod yes.`],
     l4: [`Nod your head when the answer is yes.`, `Nod three times when Mommy asks you a question.`, `Nod to Daddy and then wave goodbye.`]
   },
   {
     id: '64', scene: SCENES.BODY_MOVEMENT, word: `shake`, meaning: `摇动`, level: 'L1',
-    l2: { en: `Shake your head!`, zh: `摇头！` },
+    l2: { en: `Shake your head!`, zh: `摇摇头！` },
     l3: [`Shake your hands.`, `Shake the toy.`, `Shake your head slowly.`],
     l4: [`Shake the rattle when you hear the music.`, `Shake your hands and then clap.`, `Shake the toy three times and put it down.`]
   },
   {
     id: '65', scene: SCENES.BODY_MOVEMENT, word: `point`, meaning: `指`, level: 'L1',
-    l2: { en: `Point to the car!`, zh: `指向车子！` },
+    l2: { en: `Point to the car!`, zh: `指一指车！` },
     l3: [`Point to Mommy.`, `Point to the ball.`, `Point up.`],
     l4: [`Point to the red block on the table.`, `Point to Mommy when you hear her name.`, `Point to the door and then walk over to it.`]
   },
   {
     id: '66', scene: SCENES.BODY_MOVEMENT, word: `wave`, meaning: `挥手`, level: 'L1',
-    l2: { en: `Wave hello!`, zh: `挥手！` },
+    l2: { en: `Wave hello!`, zh: `挥手打招呼！` },
     l3: [`Wave goodbye.`, `Wave to Mommy.`, `Wave your hands.`],
     l4: [`Wave to Mommy when she comes in.`, `Wave goodbye before you leave.`, `Wave to Teddy and then give him a hug.`]
   },
@@ -418,7 +419,7 @@ export const vocabularyData: VocabularyItem[] = [
   },
   {
     id: '69', scene: SCENES.BODY_MOVEMENT, word: `pat`, meaning: `轻拍`, level: 'L1',
-    l2: { en: `Pat your tummy!`, zh: `拍拍肚子！` },
+    l2: { en: `Pat your tummy!`, zh: `拍拍头！` },
     l3: [`Pat your head.`, `Pat the teddy bear.`, `Pat your knees.`],
     l4: [`Pat Teddy on the head and then hug him.`, `Pat your knees three times.`, `Pat your back gently after you sit down.`]
   },
@@ -426,13 +427,13 @@ export const vocabularyData: VocabularyItem[] = [
     id: '70', scene: SCENES.BODY_MOVEMENT, word: `hop`, meaning: `单脚跳`, level: 'L1',
     l2: { en: `Hop on one foot!`, zh: `单脚跳！` },
     l3: [`Hop on left foot.`, `Hop three times.`, `Hop forward.`],
-    l4: [`Hop to the line and stop.`, `Hop three times when Mommy says, "Go!"`, `Hop like a bunny until you reach the mat.`]
+    l4: [`Hop to the line and stop.`, `Hop three times when Mommy says, “Go!”`, `Hop like a bunny until you reach the mat.`]
   },
   {
     id: '71', scene: SCENES.BODY_MOVEMENT, word: `squeeze`, meaning: `挤压`, level: 'L2',
-    l2: { en: `Squeeze the ball!`, zh: `捏捏球！` },
+    l2: { en: `Squeeze the ball!`, zh: `挤压球！` },
     l3: [`Squeeze the sponge.`, `Squeeze the toy.`, `Squeeze gently.`],
-    l4: [`Squeeze the ball three times.`, `Squeeze the sponge over the bowl.`, `Squeeze the toy when Mommy says, "Go!"`]
+    l4: [`Squeeze the ball three times.`, `Squeeze the sponge over the bowl.`, `Squeeze the toy when Mommy says, “Go!”`]
   },
   {
     id: '72', scene: SCENES.BODY_MOVEMENT, word: `bend`, meaning: `弯曲`, level: 'L2',
@@ -442,19 +443,19 @@ export const vocabularyData: VocabularyItem[] = [
   },
   {
     id: '73', scene: SCENES.BODY_MOVEMENT, word: `lift`, meaning: `举起；抬起`, level: 'L2',
-    l2: { en: `Lift the box!`, zh: `举起盒子！` },
+    l2: { en: `Lift the box!`, zh: `举起手臂！` },
     l3: [`Lift your arms.`, `Lift the ball.`, `Lift it up high.`],
     l4: [`Lift the toy over your head.`, `Lift the box and carry it to Mommy.`, `Lift the ball three times and put it down.`]
   },
   {
     id: '74', scene: SCENES.BODY_MOVEMENT, word: `knock`, meaning: `敲`, level: 'L2',
-    l2: { en: `Knock on the door!`, zh: `敲门！` },
+    l2: { en: `Knock on the door!`, zh: `敲敲门！` },
     l3: [`Knock on the table.`, `Knock twice.`, `Knock softly.`],
     l4: [`Knock on the door before you come in.`, `Knock three times when you are ready.`, `Knock on the table and wait for an answer.`]
   },
   {
     id: '75', scene: SCENES.BODY_MOVEMENT, word: `tiptoe`, meaning: `踮脚走`, level: 'L2',
-    l2: { en: `Tiptoe quietly!`, zh: `踮脚轻走！` },
+    l2: { en: `Tiptoe quietly!`, zh: `踮着脚轻轻走！` },
     l3: [`Tiptoe to Mommy.`, `Tiptoe to the door.`, `Tiptoe around the chair.`],
     l4: [`Tiptoe to Teddy without making a sound.`, `Tiptoe around the chair and come back.`, `Tiptoe to Mommy when the baby is sleeping.`]
   },
@@ -463,5 +464,149 @@ export const vocabularyData: VocabularyItem[] = [
     l2: { en: `Squat down!`, zh: `蹲下来！` },
     l3: [`Squat slowly.`, `Squat on the mat.`, `Squat and touch the floor.`],
     l4: [`Squat down to pick up the ball.`, `Squat three times before you stand up.`, `Squat beside the box and look inside.`]
+  },
+  {
+    id: '77', scene: SCENES.BODY_MOVEMENT, word: `crawl`, meaning: `爬行`, level: 'L1',
+    l2: { en: `Crawl like a baby!`, zh: `爬！` },
+    l3: [`Crawl under the table.`, `Crawl to Mommy.`, `Crawl around.`],
+    l4: [`Crawl through the tunnel and come back.`, `Crawl to the teddy bear under the chair.`, `Crawl under the table when Mommy says, “Go!”`]
+  },
+  {
+    id: '78', scene: SCENES.BODY_MOVEMENT, word: `reach`, meaning: `伸手够`, level: 'L2',
+    l2: { en: `Reach up!`, zh: `伸手向上！` },
+    l3: [`Reach for the ball.`, `Reach for the book.`, `Reach up high.`],
+    l4: [`Reach for Mommy's hand.`, `Reach up high and touch the wall.`, `Reach for the red block on the table.`]
+  },
+  {
+    id: '79', scene: SCENES.BODY_MOVEMENT, word: `smile`, meaning: `微笑`, level: 'L1',
+    l2: { en: `Smile at Mommy!`, zh: `笑一个！` },
+    l3: [`Give me a smile.`, `Smile for the camera.`, `Smile big.`],
+    l4: [`Smile at Teddy when you give him a hug.`, `Smile when you see your favorite toy.`, `Smile for Mommy and then wave goodbye.`]
+  },
+  {
+    id: '80', scene: SCENES.BODY_MOVEMENT, word: `peek`, meaning: `偷看；探头看`, level: 'L2',
+    l2: { en: `Peek through your fingers!`, zh: `从手指缝里偷看！` },
+    l3: [`Peek behind the door.`, `Peek under the blanket.`, `Peek at Teddy.`],
+    l4: [`Peek behind the door and see who is there.`, `Peek under the blanket before you hide.`, `Peek at Teddy and then close your eyes.`]
+  },
+  {
+    id: '81', scene: SCENES.CLEAN_ORGANIZE, word: `wipe`, meaning: `擦拭`, level: 'L1',
+    l2: { en: `Wipe your mouth!`, zh: `擦桌子！` },
+    l3: [`Wipe your hands.`, `Wipe the floor.`, `Wipe the cup.`],
+    l4: [`Wipe your hands after you eat.`, `Wipe the table before you put the food on it.`, `Wipe the cup and put it by the sink.`]
+  },
+  {
+    id: '82', scene: SCENES.CLEAN_ORGANIZE, word: `clean`, meaning: `清洁`, level: 'L1',
+    l2: { en: `Clean the table!`, zh: `把桌子擦干净！` },
+    l3: [`Clean the room.`, `Clean the toys.`, `Clean your shoes.`],
+    l4: [`Clean the toys after you finish playing.`, `Clean your shoes before you put them away.`, `Clean the table before we eat.`]
+  },
+  {
+    id: '83', scene: SCENES.CLEAN_ORGANIZE, word: `dry`, meaning: `弄干；擦干`, level: 'L1',
+    l2: { en: `Dry your hands!`, zh: `把手擦干！` },
+    l3: [`Dry the cup.`, `Dry the table.`, `Dry your hair.`],
+    l4: [`Dry your hands after washing them.`, `Dry the cup before you put it away.`, `Dry your hair before you go outside.`]
+  },
+  {
+    id: '84', scene: SCENES.CLEAN_ORGANIZE, word: `sweep`, meaning: `扫`, level: 'L2',
+    l2: { en: `Sweep the floor!`, zh: `扫地！` },
+    l3: [`Sweep the room.`, `Sweep the crumbs.`, `Sweep with the broom.`],
+    l4: [`Sweep the crumbs into the dustpan.`, `Sweep the floor after we finish eating.`, `Sweep the room before you put the toys away.`]
+  },
+  {
+    id: '85', scene: SCENES.CLEAN_ORGANIZE, word: `pick up`, meaning: `捡起；拿起`, level: 'L1',
+    l2: { en: `Pick up the toy!`, zh: `把玩具捡起来！` },
+    l3: [`Pick up the blocks.`, `Pick up the book.`, `Pick up the ball.`],
+    l4: [`Pick up the toys from the floor.`, `Pick up three blocks and put them in the box.`, `Pick up the book after you finish reading.`]
+  },
+  {
+    id: '86', scene: SCENES.CLEAN_ORGANIZE, word: `splash`, meaning: `泼；溅`, level: 'L1',
+    l2: { en: `Splash the water!`, zh: `泼水！` },
+    l3: [`Splash in the water.`, `Splash with your hands.`, `Splash gently.`],
+    l4: [`Splash in the water three times.`, `Splash with your hands and then dry them.`, `Splash the water when Mommy says, “Go!”`]
+  },
+  {
+    id: '87', scene: SCENES.CLEAN_ORGANIZE, word: `spray`, meaning: `喷洒`, level: 'L2',
+    l2: { en: `Spray the water!`, zh: `喷水！` },
+    l3: [`Spray the flower.`, `Spray the plant.`, `Spray the window.`],
+    l4: [`Spray some water on the plant.`, `Spray the cleaner on the cloth.`, `Spray the window before you wipe it.`]
+  },
+  {
+    id: '88', scene: SCENES.CLEAN_ORGANIZE, word: `scrub`, meaning: `刷洗；用力擦洗`, level: 'L3',
+    l2: { en: `Scrub the table!`, zh: `刷洗桌子！` },
+    l3: [`Scrub the cup.`, `Scrub the sink.`, `Scrub with a sponge.`],
+    l4: [`Scrub the table until it is clean.`, `Scrub the dirty spot with a sponge.`, `Scrub the cup before you rinse it.`]
+  },
+  {
+    id: '89', scene: SCENES.CLEAN_ORGANIZE, word: `mop`, meaning: `拖地`, level: 'L3',
+    l2: { en: `Mop the floor!`, zh: `拖地！` },
+    l3: [`Mop the kitchen floor.`, `Mop the room.`, `Mop up the water.`],
+    l4: [`Mop the floor after the water spills.`, `Mop the kitchen floor before dinner.`, `Mop the wet floor carefully so nobody slips.`]
+  },
+  {
+    id: '90', scene: SCENES.CLEAN_ORGANIZE, word: `water`, meaning: `浇水`, level: 'L1',
+    l2: { en: `Water the plants!`, zh: `给植物浇水！` },
+    l3: [`Water the flowers.`, `Water the garden.`, `Water the plant slowly.`],
+    l4: [`Water the plants in the morning.`, `Water the flowers with the blue cup.`, `Water the small plant when the soil is dry.`]
+  },
+  {
+    id: '91', scene: SCENES.CLEAN_ORGANIZE, word: `line up`, meaning: `排成一列`, level: 'L2',
+    l2: { en: `Line up the cars!`, zh: `把小汽车排成一列！` },
+    l3: [`Line up the blocks.`, `Line up the books.`, `Line up the toys.`],
+    l4: [`Line up the cars by color.`, `Line up three blocks on the table.`, `Line up the toys before you put them away.`]
+  },
+  {
+    id: '92', scene: SCENES.CLEAN_ORGANIZE, word: `hang`, meaning: `悬挂；挂起`, level: 'L2',
+    l2: { en: `Hang up your coat!`, zh: `把外套挂起来！` },
+    l3: [`Hang up the towel.`, `Hang the bag.`, `Hang the picture.`],
+    l4: [`Hang up your coat by the door.`, `Hang the towel on the hook after you wash.`, `Hang the bag on the chair before you sit down.`]
+  },
+  {
+    id: '93', scene: SCENES.CLEAN_ORGANIZE, word: `throw away`, meaning: `扔掉`, level: 'L2',
+    l2: { en: `Throw away the trash!`, zh: `把垃圾扔掉！` },
+    l3: [`Throw away the paper.`, `Throw away the wrapper.`, `Throw it away.`],
+    l4: [`Throw away the trash after eating.`, `Throw away the paper when you finish drawing.`, `Throw the empty box away before you clean the table.`]
+  },
+  {
+    id: '94', scene: SCENES.CLEAN_ORGANIZE, word: `hand`, meaning: `递给`, level: 'L2',
+    l2: { en: `Hand Mommy the toy!`, zh: `把书递给我！` },
+    l3: [`Hand me the cup.`, `Hand me the book.`, `Hand Daddy the ball.`],
+    l4: [`Hand me the red block.`, `Hand the book to Mommy after you read it.`, `Hand Daddy the ball and then sit down.`]
+  },
+  {
+    id: '95', scene: SCENES.CLEAN_ORGANIZE, word: `fold`, meaning: `折叠`, level: 'L2',
+    l2: { en: `Fold the towel!`, zh: `叠毛巾！` },
+    l3: [`Fold the clothes.`, `Fold the paper.`, `Fold the blanket.`],
+    l4: [`Fold the towel in half.`, `Fold the clothes and put them away.`, `Fold the paper before you put it in the box.`]
+  },
+  {
+    id: '96', scene: SCENES.CLEAN_ORGANIZE, word: `sort`, meaning: `分类`, level: 'L2',
+    l2: { en: `Sort the blocks!`, zh: `把积木分类！` },
+    l3: [`Sort the toys.`, `Sort the colors.`, `Sort the books.`],
+    l4: [`Sort the blocks by color.`, `Sort the toys into two groups.`, `Sort the books and put them on the shelf.`]
+  },
+  {
+    id: '97', scene: SCENES.CLEAN_ORGANIZE, word: `put away`, meaning: `收起来；放回原处`, level: 'L2',
+    l2: { en: `Put away your shoes!`, zh: `把鞋子收起来！` },
+    l3: [`Put away the books.`, `Put away the blocks.`, `Put the cup away.`],
+    l4: [`Put away the toys after playing.`, `Put the blocks away in the box.`, `Put the books away before you go to bed.`]
+  },
+  {
+    id: '98', scene: SCENES.CLEAN_ORGANIZE, word: `dust`, meaning: `掸灰；除尘`, level: 'L3',
+    l2: { en: `Dust the table!`, zh: `掸掸桌上的灰！` },
+    l3: [`Dust the shelf.`, `Dust the chair.`, `Dust the sofa.`],
+    l4: [`Dust the shelf before you put the books on it.`, `Dust the table with a dry cloth.`, `Dust the chair after you move it.`]
+  },
+  {
+    id: '99', scene: SCENES.CLEAN_ORGANIZE, word: `vacuum`, meaning: `用吸尘器清洁`, level: 'L3',
+    l2: { en: `Vacuum the floor!`, zh: `用吸尘器吸地！` },
+    l3: [`Vacuum the room.`, `Vacuum the carpet.`, `Vacuum under the table.`],
+    l4: [`Vacuum the floor after playing.`, `Vacuum under the sofa carefully.`, `Vacuum the carpet before you put the toys back.`]
+  },
+  {
+    id: '100', scene: SCENES.CLEAN_ORGANIZE, word: `organize`, meaning: `整理；组织`, level: 'L3',
+    l2: { en: `Organize the toys!`, zh: `整理玩具！` },
+    l3: [`Organize the books.`, `Organize the blocks.`, `Organize the shelf.`],
+    l4: [`Organize the toys by type.`, `Organize the books and put them on the shelf.`, `Organize the blocks by color before you build.`]
   }
 ];
