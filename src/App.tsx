@@ -1,23 +1,20 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { vocabularyData, SCENES } from './data/vocabulary';
 import { VocabularyCard } from './components/VocabularyCard';
 import { Level, VocabularyItem } from './types';
-import { List, Play, Search, Languages } from 'lucide-react';
+import { List, Play, Search, Languages, Filter } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 
 function App() {
-  const [selectedScene, setSelectedScene] = useState<string>('ALL');
   const [selectedLevel, setSelectedLevel] = useState<Level | 'ALL'>('ALL');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showIndex, setShowIndex] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
   const [uiLang, setUiLang] = useState<'zh' | 'en'>('zh');
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredData = useMemo(() => {
     let data = vocabularyData;
-    if (selectedScene !== 'ALL') {
-      data = data.filter(item => item.scene.en === selectedScene);
-    }
     if (selectedLevel !== 'ALL') {
       data = data.filter(item => item.level === selectedLevel);
     }
@@ -31,7 +28,7 @@ function App() {
       );
     }
     return data;
-  }, [selectedScene, selectedLevel, searchQuery]);
+  }, [selectedLevel, searchQuery]);
 
   const handleSwipeLeft = () => {
     if (currentIndex < filteredData.length - 1) {
@@ -45,11 +42,23 @@ function App() {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     setCurrentIndex(0);
-  }, [selectedScene, selectedLevel, searchQuery]);
+  }, [selectedLevel, searchQuery]);
 
   const currentItem = filteredData[currentIndex];
+  const activeScene = currentItem?.scene.en || 'ALL';
+
+  const jumpToScene = (sceneEn: string) => {
+    if (sceneEn === 'ALL') {
+      setCurrentIndex(0);
+      return;
+    }
+    const index = filteredData.findIndex(item => item.scene.en === sceneEn);
+    if (index !== -1) {
+      setCurrentIndex(index);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#F9F8F4] to-[#F2F0E9] flex flex-col font-sans text-[#4A4A4A] overflow-hidden">
@@ -59,6 +68,13 @@ function App() {
           <h1 className="text-xl font-bold tracking-tight text-[#5C6350]">TPR<span className="text-[#8C8A81] font-medium">Vocab</span></h1>
           <div className="flex gap-2">
             <button 
+              onClick={() => setShowFilters(!showFilters)}
+              className={`p-2 rounded-full transition-colors w-9 h-9 flex items-center justify-center ${showFilters ? 'bg-[#5C6350] text-white' : 'bg-[#F2F0E9] text-[#8C8A81] hover:bg-[#EAE7DF]'}`}
+              aria-label="Toggle Filters"
+            >
+              <Filter className="w-4 h-4" />
+            </button>
+            <button 
               onClick={() => setUiLang(prev => prev === 'zh' ? 'en' : 'zh')}
               className="p-2 bg-[#F2F0E9] text-[#8C8A81] rounded-full hover:bg-[#EAE7DF] transition-colors flex items-center justify-center w-9 h-9"
               aria-label="Toggle Language"
@@ -67,7 +83,7 @@ function App() {
             </button>
             <button 
               onClick={() => setShowIndex(!showIndex)}
-              className="p-2 bg-[#F2F0E9] text-[#8C8A81] rounded-full hover:bg-[#EAE7DF] transition-colors w-9 h-9 flex items-center justify-center"
+              className={`p-2 rounded-full transition-colors w-9 h-9 flex items-center justify-center ${showIndex ? 'bg-[#5C6350] text-white' : 'bg-[#F2F0E9] text-[#8C8A81] hover:bg-[#EAE7DF]'}`}
               aria-label="Toggle Index"
             >
               {showIndex ? <Play className="w-5 h-5" /> : <List className="w-5 h-5" />}
@@ -75,48 +91,57 @@ function App() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 max-w-sm mx-auto w-full">
-          {/* Scene Filter */}
-          <div className="flex gap-2 overflow-x-auto pb-2 custom-scrollbar hide-scrollbar">
-            <button
-              onClick={() => setSelectedScene('ALL')}
-              className={`px-4 py-1.5 rounded-full text-[10px] uppercase tracking-wider font-bold whitespace-nowrap transition-colors border ${
-                selectedScene === 'ALL' ? 'bg-[#5C6350] text-white border-[#5C6350]' : 'bg-white text-[#8C8A81] border-[#EAE7DF] hover:bg-[#F2F0E9]'
-              }`}
+        <AnimatePresence>
+          {showFilters && (
+            <motion.div 
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="overflow-hidden flex flex-col gap-3 max-w-sm mx-auto w-full"
             >
-              {uiLang === 'zh' ? '全部场景' : 'All Scenes'}
-            </button>
-            {Object.values(SCENES).map((scene) => (
-              <button
-                key={scene.en}
-                onClick={() => setSelectedScene(scene.en)}
-                className={`px-4 py-1.5 rounded-full text-[10px] uppercase tracking-wider font-bold whitespace-nowrap transition-colors border`}
-                style={{ 
-                  backgroundColor: selectedScene === scene.en ? scene.color : 'white',
-                  color: selectedScene === scene.en ? 'white' : '#8C8A81',
-                  borderColor: selectedScene === scene.en ? scene.color : '#EAE7DF'
-                }}
-              >
-                {uiLang === 'zh' ? scene.zh : scene.en}
-              </button>
-            ))}
-          </div>
+              {/* Scene Jump */}
+              <div className="flex gap-2 overflow-x-auto pb-2 pt-1 custom-scrollbar hide-scrollbar">
+                <button
+                  onClick={() => jumpToScene('ALL')}
+                  className={`px-4 py-1.5 rounded-full text-[10px] uppercase tracking-wider font-bold whitespace-nowrap transition-colors border ${
+                    activeScene === 'ALL' ? 'bg-[#5C6350] text-white border-[#5C6350]' : 'bg-white text-[#8C8A81] border-[#EAE7DF] hover:bg-[#F2F0E9]'
+                  }`}
+                >
+                  {uiLang === 'zh' ? '全部场景' : 'All Scenes'}
+                </button>
+                {Object.values(SCENES).map((scene) => (
+                  <button
+                    key={scene.en}
+                    onClick={() => jumpToScene(scene.en)}
+                    className={`px-4 py-1.5 rounded-full text-[10px] uppercase tracking-wider font-bold whitespace-nowrap transition-colors border`}
+                    style={{ 
+                      backgroundColor: activeScene === scene.en ? scene.color : 'white',
+                      color: activeScene === scene.en ? 'white' : '#8C8A81',
+                      borderColor: activeScene === scene.en ? scene.color : '#EAE7DF'
+                    }}
+                  >
+                    {uiLang === 'zh' ? scene.zh : scene.en}
+                  </button>
+                ))}
+              </div>
 
-          {/* Level Filter */}
-          <div className="flex gap-2">
-            {['ALL', 'L1', 'L2', 'L3'].map((level) => (
-              <button
-                key={level}
-                onClick={() => setSelectedLevel(level as Level | 'ALL')}
-                className={`flex-1 py-1.5 rounded-md text-xs font-bold transition-colors ${
-                  selectedLevel === level ? 'bg-[#5C6350] text-white shadow-sm' : 'bg-[#F2F0E9] text-[#8C8A81] hover:bg-[#EAE7DF]'
-                }`}
-              >
-                {level === 'ALL' ? (uiLang === 'zh' ? '全部' : 'ALL') : level}
-              </button>
-            ))}
-          </div>
-        </div>
+              {/* Level Filter */}
+              <div className="flex gap-2 pb-1">
+                {['ALL', 'L1', 'L2', 'L3'].map((level) => (
+                  <button
+                    key={level}
+                    onClick={() => setSelectedLevel(level as Level | 'ALL')}
+                    className={`flex-1 py-1.5 rounded-md text-xs font-bold transition-colors ${
+                      selectedLevel === level ? 'bg-[#5C6350] text-white shadow-sm' : 'bg-[#F2F0E9] text-[#8C8A81] hover:bg-[#EAE7DF]'
+                    }`}
+                  >
+                    {level === 'ALL' ? (uiLang === 'zh' ? '全部' : 'ALL') : level}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       {/* Main Content */}
@@ -190,15 +215,10 @@ function App() {
                 />
                 
                 {/* Dots indicator */}
-                <div className="flex justify-center gap-2 mt-6 max-w-sm mx-auto flex-wrap px-4">
-                  {filteredData.map((_, idx) => (
-                    <div 
-                      key={idx} 
-                      className={`h-1.5 rounded-full transition-all duration-300 ${
-                        idx === currentIndex ? 'w-4 bg-[#A7B899]' : 'w-1.5 bg-[#EAE7DF]'
-                      }`}
-                    />
-                  ))}
+                <div className="flex justify-center items-center gap-1.5 mt-6 max-w-sm mx-auto h-2">
+                  <div className={`h-1.5 rounded-full transition-all duration-300 ${currentIndex > 0 ? 'w-1.5 bg-[#D5D2C4]' : 'w-1.5 bg-transparent'}`} />
+                  <div className="h-1.5 w-6 bg-[#A7B899] rounded-full" />
+                  <div className={`h-1.5 rounded-full transition-all duration-300 ${currentIndex < filteredData.length - 1 ? 'w-1.5 bg-[#D5D2C4]' : 'w-1.5 bg-transparent'}`} />
                 </div>
               </motion.div>
             ) : (
