@@ -1,7 +1,7 @@
 export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> = {
-  Add your image and audio mappings here.
-  Use the exact word from your vocabularyData as the key (e.g., 'wake', 'jump').
-  When you upload your assets to Cloudflare R2, paste the public URLs here.
+  // Add your image and audio mappings here.
+  // Use the exact word from your vocabularyData as the key (e.g., 'wake', 'jump').
+  // When you upload your assets to Cloudflare R2, paste the public URLs here.
 
   'wake': {
     imageUrl: 'https://tpr.fastpage.top/images/wake.jpg',
