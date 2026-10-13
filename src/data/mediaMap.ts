@@ -32,7 +32,7 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/kiss.wav'
   },
   'lie down': {
-    imageUrl: 'https://tpr.fastpage.top/images/lie down.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/lie.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/lie down.wav'
   },
   'blink': {
@@ -100,7 +100,7 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/put on.wav'
   },
   'take off': {
-    imageUrl: 'https://tpr.fastpage.top/images/take off.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/takeoff.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/take off.wav'
   },
   'spit': {
@@ -124,7 +124,7 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/pass.wav'
   },
   'zip': {
-    imageUrl: 'https://tpr.fastpage.top/images/zip.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/zip up.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/zip.wav'
   },
   'button': {
@@ -184,7 +184,7 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/catch.wav'
   },
   'throw': {
-    imageUrl: 'https://tpr.fastpage.top/images/throw.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/throw the ball.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/throw.wav'
   },
   'kick': {
