@@ -4,7 +4,7 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
   // When you upload your assets to Cloudflare R2, paste the public URLs here.
 
   'wake': {
-    imageUrl: 'https://tpr.fastpage.top/images/wake.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/wake up.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/wake.wav'
   },
   'open': {
@@ -32,7 +32,7 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/kiss.wav'
   },
   'lie down': {
-    imageUrl: 'https://tpr.fastpage.top/images/lie_down.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/lie down.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/lie down.wav'
   },
   'blink': {
@@ -44,11 +44,11 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/sit.wav'
   },
   'turn on': {
-    imageUrl: 'https://tpr.fastpage.top/images/turn_on.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/turn on.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/turn on.wav'
   },
   'turn off': {
-    imageUrl: 'https://tpr.fastpage.top/images/turn_off.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/turn off.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/turn off.wav'
   },
   'rub': {
@@ -96,11 +96,11 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/hold.wav'
   },
   'put on': {
-    imageUrl: 'https://tpr.fastpage.top/images/put_on.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/put on.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/put on.wav'
   },
   'take off': {
-    imageUrl: 'https://tpr.fastpage.top/images/take_off.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/take off.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/take off.wav'
   },
   'spit': {
@@ -108,7 +108,7 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/spit.wav'
   },
   'pull up': {
-    imageUrl: 'https://tpr.fastpage.top/images/pull_up.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/pull up.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/pull up.wav'
   },
   'blow': {
@@ -140,11 +140,11 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/snap.wav'
   },
   'tuck in': {
-    imageUrl: 'https://tpr.fastpage.top/images/tuck_in.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/tuck in.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/tuck in.wav'
   },
   'take out': {
-    imageUrl: 'https://tpr.fastpage.top/images/take_out.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/take out.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/take out.wav'
   },
   'pour': {
@@ -340,7 +340,7 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/sweep.wav'
   },
   'pick up': {
-    imageUrl: 'https://tpr.fastpage.top/images/pick_up.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/pick up.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/pick up.wav'
   },
   'splash': {
@@ -364,7 +364,7 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/water.wav'
   },
   'line up': {
-    imageUrl: 'https://tpr.fastpage.top/images/line_up.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/line up.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/line up.wav'
   },
   'hang': {
@@ -372,7 +372,7 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/hang.wav'
   },
   'throw away': {
-    imageUrl: 'https://tpr.fastpage.top/images/throw_away.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/throw away.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/throw away.wav'
   },
   'hand': {
@@ -388,7 +388,7 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/sort.wav'
   },
   'put away': {
-    imageUrl: 'https://tpr.fastpage.top/images/put_away.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/put away.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/put away.wav'
   },
   'dust': {
