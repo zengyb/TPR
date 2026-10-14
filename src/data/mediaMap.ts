@@ -56,7 +56,7 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/rub.wav'
   },
   'stretch': {
-    imageUrl: 'https://tpr.fastpage.top/images/stretch.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/Stretch.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/stretch.wav'
   },
   'yawn': {
@@ -108,7 +108,7 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/spit.wav'
   },
   'pull up': {
-    imageUrl: 'https://tpr.fastpage.top/images/pull up.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/pull.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/pull up.wav'
   },
   'blow': {
@@ -232,7 +232,7 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/dig.wav'
   },
   'pedal': {
-    imageUrl: 'https://tpr.fastpage.top/images/pedal.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/Pedal.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/pedal.wav'
   },
   'balance': {
@@ -304,7 +304,7 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/tiptoe.wav'
   },
   'squat': {
-    imageUrl: 'https://tpr.fastpage.top/images/squat.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/Squat.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/squat.wav'
   },
   'crawl': {
@@ -336,11 +336,11 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/dry.wav'
   },
   'sweep': {
-    imageUrl: 'https://tpr.fastpage.top/images/sweep.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/Sweep.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/sweep.wav'
   },
   'pick up': {
-    imageUrl: 'https://tpr.fastpage.top/images/pick up.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/pick.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/pick up.wav'
   },
   'splash': {
@@ -364,11 +364,11 @@ export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> 
     audioUrl: 'https://tpr.fastpage.top/audio/water.wav'
   },
   'line up': {
-    imageUrl: 'https://tpr.fastpage.top/images/line up.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/line.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/line up.wav'
   },
   'hang': {
-    imageUrl: 'https://tpr.fastpage.top/images/hang.jpg',
+    imageUrl: 'https://tpr.fastpage.top/images/Hang.jpg',
     audioUrl: 'https://tpr.fastpage.top/audio/hang.wav'
   },
   'throw away': {
