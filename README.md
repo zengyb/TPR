@@ -56,16 +56,17 @@
 | 5 ~ 7 | `word5.mp3` ~ `word7.mp3` | 背面 · 四级句式 1 ~ 3 |
 
 - 默认地址规则为 `https://tpr.fastpage.top/audio/{word}.mp3`、`{word}1.mp3` … `{word}7.mp3`；词组单词保留空格（如 `pull up.mp3`）。若某个单词的音频文件名与单词不同，直接在 `wordAudio(...)` 里传入实际文件名即可。
+- 图片地址规则为 `https://tpr.fastpage.top/images/{word}.jpg`，同样以 Excel 中的词汇名生成（词组保留空格，如 `pull up.jpg`）。
 
 ```typescript
 export const mediaMap: Record<string, MediaEntry> = {
-  'brush': { audioUrls: wordAudio('brush') },       // brush.mp3, brush1.mp3 ... brush7.mp3
-  'tuck': { audioUrls: wordAudio('tuck in') },      // 音频文件名与单词不同：tuck in.mp3 ...
+  'brush': { imageUrl: wordImage('brush'), audioUrls: wordAudio('brush') },  // brush.jpg + brush.mp3 ~ brush7.mp3
+  'tuck': { imageUrl: wordImage('tuck'), audioUrls: wordAudio('tuck in') },  // 音频文件名与单词不同：tuck in.mp3 ...
   // 按同样的格式继续添加其它词汇
 };
 ```
 **说明**：
-- 如果没有填 `imageUrl` 或将其注释掉，卡片中间将显示提示上传的占位符。
+- 图片文件名与单词一致即可，上传到 `images/` 目录后卡片会自动显示；暂未上传时卡片中间显示占位提示。
 - 如果没有配置对应的音频地址，点击该区域时会退回浏览器自带的英文语音朗读。
 
 ### 3. 定制主题颜色
