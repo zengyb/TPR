@@ -46,24 +46,27 @@
 
 - 打开 `src/data/mediaMap.ts`。
 - 文件中是以每个单词（小写）作为字典的 Key（键）。
-- 将你上传后得到的链接填入对应的 `imageUrl` 和 `audioUrl` 中：
+- 每个单词对应 **8 个音频文件**（`audioUrls` 数组），按卡片上各点击区域的顺序排列：
+
+| 数组下标 | 文件名 | 对应点击区域 |
+| --- | --- | --- |
+| 0 | `word.mp3` | 正面 · 图片 + 单词区域 |
+| 1 | `word1.mp3` | 正面 · 例句区域 |
+| 2 ~ 4 | `word2.mp3` ~ `word4.mp3` | 背面 · 三级句式 1 ~ 3 |
+| 5 ~ 7 | `word5.mp3` ~ `word7.mp3` | 背面 · 四级句式 1 ~ 3 |
+
+- 默认地址规则为 `https://tpr.fastpage.top/audio/{word}.mp3`、`{word}1.mp3` … `{word}7.mp3`；词组单词保留空格（如 `pull up.mp3`）。若某个单词的音频文件名与单词不同，直接在 `wordAudio(...)` 里传入实际文件名即可。
 
 ```typescript
-export const mediaMap: Record<string, { imageUrl?: string; audioUrl?: string }> = {
-  'wake up': {
-    imageUrl: 'https://你的图床地址.com/wake-up.jpg', // 建议使用 3:4 比例的竖版图片
-    audioUrl: 'https://你的音频地址.com/wake-up.mp3'
-  },
-  'jump': {
-    imageUrl: 'https://你的图床地址.com/jump.jpg',
-    audioUrl: 'https://你的音频地址.com/jump.mp3'
-  },
-  // 按照同样的格式继续添加其他 70 多个词汇...
+export const mediaMap: Record<string, MediaEntry> = {
+  'brush': { audioUrls: wordAudio('brush') },       // brush.mp3, brush1.mp3 ... brush7.mp3
+  'tuck': { audioUrls: wordAudio('tuck in') },      // 音频文件名与单词不同：tuck in.mp3 ...
+  // 按同样的格式继续添加其它词汇
 };
 ```
 **说明**：
 - 如果没有填 `imageUrl` 或将其注释掉，卡片中间将显示提示上传的占位符。
-- 如果没有填 `audioUrl`，卡片右上角的发音小喇叭按钮将被自动隐藏。
+- 如果没有配置对应的音频地址，点击该区域时会退回浏览器自带的英文语音朗读。
 
 ### 3. 定制主题颜色
 在 `src/data/vocabulary.ts` 顶部的 `SCENES` 对象中，你可以修改这四个场景分类的主题色（`color` 属性）。支持任何 HEX 颜色代码（如 `#D4A373`）。这里修改后，该分类下所有词汇卡片的背景色和文字点缀色会自动同步变更。
