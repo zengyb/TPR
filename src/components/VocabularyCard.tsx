@@ -90,6 +90,7 @@ const AudioArea: React.FC<AudioAreaProps> = ({
 
 export const VocabularyCard: React.FC<VocabularyCardProps> = ({ item, onSwipeLeft, onSwipeRight, uiLang }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [imageFailed, setImageFailed] = useState(false);
   const { activeId, progress, toggle, stop } = useAudioPlayer();
 
   // Lookup external media resources based on the word key
@@ -99,6 +100,7 @@ export const VocabularyCard: React.FC<VocabularyCardProps> = ({ item, onSwipeLef
   // Reset flip state and stop playback when item changes
   useEffect(() => {
     setIsFlipped(false);
+    setImageFailed(false);
     stop();
   }, [item.id]);
 
@@ -191,13 +193,18 @@ export const VocabularyCard: React.FC<VocabularyCardProps> = ({ item, onSwipeLef
 
             {/* Image Area - 3:4 aspect ratio optimized */}
             <div className="w-full flex-1 flex flex-col items-center justify-center group relative my-3 overflow-hidden min-h-[200px]">
-              {media?.imageUrl ? (
-                <img src={media.imageUrl} alt={item.word} className="w-full h-full object-contain mix-blend-multiply" />
+              {media?.imageUrl && !imageFailed ? (
+                <img
+                  src={media.imageUrl}
+                  alt={item.word}
+                  onError={() => setImageFailed(true)}
+                  className="w-full h-full object-contain mix-blend-multiply"
+                />
               ) : (
                 <>
                   <span className="text-4xl opacity-50 mb-2">🖼️</span>
                   <p className="text-[10px] text-[#8C8A81] opacity-0 group-hover:opacity-100 transition-opacity px-4 text-center">
-                    {uiLang === 'zh' ? '在此处显示图片' : 'Upload a 3:4 image to R2 and map in mediaMap.ts'}
+                    {uiLang === 'zh' ? '图片暂未上传' : 'Image not uploaded yet'}
                   </p>
                 </>
               )}
