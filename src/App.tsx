@@ -61,9 +61,9 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#F9F8F4] to-[#F2F0E9] flex flex-col font-sans text-[#4A4A4A] overflow-hidden">
+    <div className="h-[100dvh] bg-gradient-to-b from-[#F9F8F4] to-[#F2F0E9] flex flex-col font-sans text-[#4A4A4A] overflow-hidden">
       {/* Header / Filter Bar */}
-      <header className="bg-white/80 backdrop-blur-md px-4 py-4 shadow-sm z-10 flex flex-col gap-4 sticky top-0 border-b border-[#EAE7DF]">
+      <header className="bg-white/80 backdrop-blur-md px-4 py-3 shadow-sm z-10 flex flex-col gap-3 shrink-0 border-b border-[#EAE7DF]">
         <div className="flex justify-between items-center max-w-sm mx-auto w-full">
           <h1 className="text-xl font-bold tracking-tight text-[#5C6350]">TPR<span className="text-[#8C8A81] font-medium">Vocab</span></h1>
           <div className="flex gap-2">
@@ -145,7 +145,7 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow flex items-center justify-center p-4 relative">
+      <main className="flex-1 min-h-0 flex flex-col px-3 pt-3 pb-2">
         <AnimatePresence mode="wait">
           {showIndex ? (
             <motion.div 
@@ -153,7 +153,7 @@ function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="w-full max-w-sm h-[70vh] min-h-[480px] max-h-[650px] bg-[#FDFCF0] rounded-[40px] shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-[#EAE7DF] overflow-hidden flex flex-col"
+              className="w-full max-w-sm mx-auto flex-1 min-h-0 bg-[#FDFCF0] rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-[#EAE7DF] overflow-hidden flex flex-col"
             >
               <div className="p-6 border-b border-[#EAE7DF] bg-white flex flex-col gap-4">
                 <div className="flex justify-between items-center">
@@ -205,17 +205,19 @@ function App() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="w-full"
+                className="w-full max-w-sm mx-auto flex-1 min-h-0 flex flex-col"
               >
-                <VocabularyCard 
-                  item={currentItem} 
-                  onSwipeLeft={handleSwipeLeft} 
-                  onSwipeRight={handleSwipeRight} 
-                  uiLang={uiLang}
-                />
+                <div className="flex-1 min-h-0">
+                  <VocabularyCard 
+                    item={currentItem} 
+                    onSwipeLeft={handleSwipeLeft} 
+                    onSwipeRight={handleSwipeRight} 
+                    uiLang={uiLang}
+                  />
+                </div>
                 
                 {/* Dots indicator */}
-                <div className="flex justify-center items-center gap-1.5 mt-6 max-w-sm mx-auto h-2">
+                <div className="flex justify-center items-center gap-1.5 mt-2.5 max-w-sm mx-auto h-2 shrink-0">
                   <div className={`h-1.5 rounded-full transition-all duration-300 ${currentIndex > 0 ? 'w-1.5 bg-[#D5D2C4]' : 'w-1.5 bg-transparent'}`} />
                   <div className="h-1.5 w-6 bg-[#A7B899] rounded-full" />
                   <div className={`h-1.5 rounded-full transition-all duration-300 ${currentIndex < filteredData.length - 1 ? 'w-1.5 bg-[#D5D2C4]' : 'w-1.5 bg-transparent'}`} />
