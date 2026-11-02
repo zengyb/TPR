@@ -15,6 +15,11 @@ interface VocabularyCardProps {
 const RING_RADIUS = 15;
 const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
 
+const FACE_STYLE: React.CSSProperties = {
+  backfaceVisibility: 'hidden',
+  WebkitBackfaceVisibility: 'hidden',
+};
+
 interface AudioAreaProps {
   isPlaying: boolean;
   progress: number;
@@ -22,7 +27,7 @@ interface AudioAreaProps {
   color: string;
   label: string;
   className?: string;
-  iconClassName?: string;
+  iconPosition?: 'top' | 'center';
   children: React.ReactNode;
 }
 
@@ -34,7 +39,7 @@ const AudioArea: React.FC<AudioAreaProps> = ({
   color,
   label,
   className = '',
-  iconClassName = '',
+  iconPosition = 'top',
   children,
 }) => {
   const handleClick = (e: React.MouseEvent) => {
@@ -58,12 +63,14 @@ const AudioArea: React.FC<AudioAreaProps> = ({
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       style={isPlaying ? { backgroundColor: 'rgba(233, 196, 106, 0.16)' } : undefined}
-      className={`relative cursor-pointer rounded-3xl transition-colors ${className}`}
+      className={`relative cursor-pointer rounded-2xl transition-colors ${className}`}
     >
       <span
         aria-hidden="true"
         style={{ backgroundColor: color }}
-        className={`absolute top-2 right-2 z-10 w-6 h-6 rounded-full flex items-center justify-center text-white shadow-sm ${iconClassName}`}
+        className={`absolute right-2 w-6 h-6 rounded-full flex items-center justify-center text-white shadow-sm ${
+          iconPosition === 'center' ? 'top-1/2 -translate-y-1/2' : 'top-2'
+        }`}
       >
         {isPlaying && (
           <svg className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none" viewBox="0 0 32 32">
@@ -119,7 +126,7 @@ export const VocabularyCard: React.FC<VocabularyCardProps> = ({ item, onSwipeLef
         e.stopPropagation();
         setIsFlipped(toFlipped);
       }}
-      className="p-1.5 rounded-full bg-[#F2F0E9] text-[#8C8A81] hover:bg-[#EAE7DF] transition-colors"
+      className="p-1.5 rounded-full bg-[#F2F0E9] text-[#8C8A81] active:bg-[#EAE7DF] transition-colors shrink-0"
       aria-label={toFlipped ? 'Show more examples' : 'Back to word'}
     >
       <ArrowLeftRight className="w-3.5 h-3.5" />
@@ -134,43 +141,43 @@ export const VocabularyCard: React.FC<VocabularyCardProps> = ({ item, onSwipeLef
       onToggle={() => toggle(id, audioUrl, sentence.en)}
       color={item.scene.color}
       label={`Play: ${sentence.en}`}
-      className={`bg-white/60 hover:bg-white py-2 pl-3 pr-10 text-left ${
-        index > 0 ? 'mt-2' : ''
-      }`}
+      iconPosition="center"
+      className={`bg-white/60 active:bg-white py-2 pl-3 pr-10 text-left ${index > 0 ? 'mt-1.5' : ''}`}
     >
-      <p className="text-sm font-bold text-[#5C6350] leading-snug">{sentence.en}</p>
-      <p className="text-xs text-[#8C8A81] mt-0.5">{sentence.zh}</p>
+      <p className="text-[13px] font-bold text-[#5C6350] leading-snug">{sentence.en}</p>
+      <p className="text-[11px] text-[#8C8A81] leading-snug mt-0.5">{sentence.zh}</p>
     </AudioArea>
   );
 
   return (
-    <div className="w-full max-w-sm h-[70vh] min-h-[480px] max-h-[650px] mx-auto perspective-1000">
+    <div className="w-full h-full mx-auto perspective-1000">
       <motion.div
-        className="w-full h-full relative preserve-3d"
+        className="w-full h-full relative"
+        style={{ transformStyle: 'preserve-3d' }}
         animate={{ rotateY: isFlipped ? 180 : 0 }}
         transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
         dragElastic={0.2}
         onDragEnd={handleDragEnd}
-        style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Front of Card */}
-        <div className={`absolute w-full h-full backface-hidden rounded-[40px] p-5 flex flex-col shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-[#EAE7DF] bg-white`}>
+        <div
+          style={{ ...FACE_STYLE, transform: 'rotateY(0deg)' }}
+          className="absolute inset-0 rounded-[32px] p-4 flex flex-col shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-[#EAE7DF] bg-white overflow-hidden"
+        >
           {/* Header */}
-          <div className="flex justify-between items-start shrink-0">
-            <div className="leading-tight">
-              <span 
-                className="px-3 py-1.5 rounded-full font-bold text-white flex items-center gap-1.5 w-fit shadow-sm"
-                style={{ backgroundColor: item.scene.color }}
-              >
-                <span className="text-xs">{item.scene.zh}</span>
-                <span className="text-[10px] opacity-60 font-normal">|</span>
-                <span className="text-[10px] uppercase tracking-wider">{item.scene.en}</span>
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className={`bg-[#F2F0E9] text-[#5C6350] px-3 py-1 rounded-full text-[10px] font-bold`}>
+          <div className="flex justify-between items-center gap-2 shrink-0">
+            <span
+              className="px-2.5 py-1 rounded-full font-bold text-white flex items-center gap-1.5 shadow-sm min-w-0"
+              style={{ backgroundColor: item.scene.color }}
+            >
+              <span className="text-[11px] truncate">{item.scene.zh}</span>
+              <span className="text-[9px] opacity-60 font-normal">|</span>
+              <span className="text-[9px] uppercase tracking-wider truncate">{item.scene.en}</span>
+            </span>
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="bg-[#F2F0E9] text-[#5C6350] px-2.5 py-1 rounded-full text-[10px] font-bold">
                 {item.level}
               </span>
               {flipButton(true)}
@@ -184,25 +191,25 @@ export const VocabularyCard: React.FC<VocabularyCardProps> = ({ item, onSwipeLef
             onToggle={() => toggle('word', audioUrls[0], item.word)}
             color={item.scene.color}
             label={`Play: ${item.word}`}
-            className="flex flex-col flex-grow min-h-0 mt-2 pt-2 hover:bg-[#F9F8F4]"
+            className="flex flex-col flex-1 min-h-0 mt-1 pt-2 active:bg-[#F9F8F4]"
           >
-            <div className="text-center shrink-0 pr-6 pl-2">
-              <h2 className="text-4xl font-black text-[#5C6350] mb-2 leading-none">{item.word}</h2>
-              <p className="text-lg font-medium text-[#8C8A81]">{item.meaning}</p>
+            <div className="text-center shrink-0 pr-7 pl-1">
+              <h2 className="text-3xl font-black text-[#5C6350] leading-none">{item.word}</h2>
+              <p className="text-base font-medium text-[#8C8A81] mt-1.5">{item.meaning}</p>
             </div>
 
-            {/* Image Area - 3:4 aspect ratio optimized */}
-            <div className="w-full flex-1 flex flex-col items-center justify-center group relative my-3 overflow-hidden min-h-[200px]">
+            {/* Image Area */}
+            <div className="w-full flex-1 flex flex-col items-center justify-center group relative my-2 overflow-hidden min-h-[110px]">
               {media?.imageUrl && !imageFailed ? (
                 <img
                   src={media.imageUrl}
                   alt={item.word}
                   onError={() => setImageFailed(true)}
-                  className="w-full h-full object-contain mix-blend-multiply"
+                  className="max-w-full max-h-full object-contain mix-blend-multiply"
                 />
               ) : (
                 <>
-                  <span className="text-4xl opacity-50 mb-2">🖼️</span>
+                  <span className="text-3xl opacity-50">🖼️</span>
                   <p className="text-[10px] text-[#8C8A81] opacity-0 group-hover:opacity-100 transition-opacity px-4 text-center">
                     {uiLang === 'zh' ? '图片暂未上传' : 'Image not uploaded yet'}
                   </p>
@@ -218,28 +225,26 @@ export const VocabularyCard: React.FC<VocabularyCardProps> = ({ item, onSwipeLef
             onToggle={() => toggle('l2', audioUrls[1], item.l2.en)}
             color={item.scene.color}
             label={`Play: ${item.l2.en}`}
-            className="w-full shrink-0 text-center pt-3 pb-4 px-3 hover:bg-[#F9F8F4]"
+            className="w-full shrink-0 text-center py-2 px-2 active:bg-[#F9F8F4]"
           >
-            <div className="flex items-center justify-center mb-1">
-              <p className="text-[10px] font-bold text-[#8C8A81] uppercase tracking-widest">
-                {uiLang === 'zh' ? '例句' : 'L2 Phrase'}
-              </p>
-            </div>
-            <span className="text-base font-bold text-[#5C6350] leading-snug pr-6">{item.l2.en}</span>
-            <p className="text-sm text-[#8C8A81]">{item.l2.zh}</p>
+            <p className="text-[9px] font-bold text-[#8C8A81] uppercase tracking-widest mb-0.5">
+              {uiLang === 'zh' ? '例句' : 'L2 Phrase'}
+            </p>
+            <p className="text-[15px] font-bold text-[#5C6350] leading-snug pr-7">{item.l2.en}</p>
+            <p className="text-xs text-[#8C8A81]">{item.l2.zh}</p>
           </AudioArea>
         </div>
 
         {/* Back of Card */}
-        <div 
-          className="absolute w-full h-full backface-hidden rounded-[40px] p-5 flex flex-col shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-[#EAE7DF] bg-white"
-          style={{ transform: 'rotateY(180deg)' }}
+        <div
+          style={{ ...FACE_STYLE, transform: 'rotateY(180deg)' }}
+          className="absolute inset-0 rounded-[32px] p-4 flex flex-col shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-[#EAE7DF] bg-white overflow-hidden"
         >
-          <div className="flex justify-between items-center mb-4 shrink-0">
-            <h3 className="text-3xl font-black text-[#5C6350] pr-4">{item.word}</h3>
-            <div className="flex items-center gap-2">
-              <span 
-                className="text-white px-3 py-1 rounded-full text-[10px] font-bold whitespace-nowrap"
+          <div className="flex justify-between items-center gap-2 shrink-0 mb-2.5">
+            <h3 className="text-2xl font-black text-[#5C6350] truncate">{item.word}</h3>
+            <div className="flex items-center gap-2 shrink-0">
+              <span
+                className="text-white px-2.5 py-1 rounded-full text-[10px] font-bold whitespace-nowrap"
                 style={{ backgroundColor: item.scene.color }}
               >
                 {uiLang === 'zh' ? '更多例句' : 'Examples'}
@@ -248,9 +253,9 @@ export const VocabularyCard: React.FC<VocabularyCardProps> = ({ item, onSwipeLef
             </div>
           </div>
 
-          <div className="flex-grow flex flex-col gap-4 overflow-y-auto pb-4 custom-scrollbar">
-            <div className="bg-[#FDFCF0] rounded-3xl p-3 border border-[#F2F0E9]">
-              <h4 className="text-sm font-bold text-[#5C6350] mb-2">
+          <div className="flex-1 min-h-0 flex flex-col gap-2.5 overflow-y-auto overscroll-contain pb-1 custom-scrollbar">
+            <div className="bg-[#FDFCF0] rounded-2xl p-2.5 border border-[#F2F0E9]">
+              <h4 className="text-xs font-bold text-[#5C6350] mb-1.5">
                 {uiLang === 'zh' ? '扩展句式' : 'Extended Sentences'}
               </h4>
               {item.l3.map((sentence, idx) =>
@@ -258,8 +263,8 @@ export const VocabularyCard: React.FC<VocabularyCardProps> = ({ item, onSwipeLef
               )}
             </div>
 
-            <div className="bg-[#F9F8F4] rounded-3xl p-3 border border-[#EAE7DF]">
-              <h4 className="text-sm font-bold text-[#5C6350] mb-2">
+            <div className="bg-[#F9F8F4] rounded-2xl p-2.5 border border-[#EAE7DF]">
+              <h4 className="text-xs font-bold text-[#5C6350] mb-1.5">
                 {uiLang === 'zh' ? '进阶句式' : 'Advanced Sentences'}
               </h4>
               {item.l4.map((sentence, idx) =>
