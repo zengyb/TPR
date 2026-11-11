@@ -177,9 +177,6 @@ export const VocabularyCard: React.FC<VocabularyCardProps> = ({ item, onSwipeLef
               <span className="text-[9px] uppercase tracking-wider truncate">{item.scene.en}</span>
             </span>
             <div className="flex items-center gap-2 shrink-0">
-              <span className="bg-[#F2F0E9] text-[#5C6350] px-2.5 py-1 rounded-full text-[10px] font-bold">
-                {item.level}
-              </span>
               {flipButton(true)}
             </div>
           </div>

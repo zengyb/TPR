@@ -1,12 +1,11 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { vocabularyData, SCENES } from './data/vocabulary';
 import { VocabularyCard } from './components/VocabularyCard';
-import { Level, VocabularyItem } from './types';
+import logo from './assets/logo.jpg';
 import { List, Play, Search, Languages, Filter } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 
 function App() {
-  const [selectedLevel, setSelectedLevel] = useState<Level | 'ALL'>('ALL');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showIndex, setShowIndex] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
@@ -15,9 +14,6 @@ function App() {
 
   const filteredData = useMemo(() => {
     let data = vocabularyData;
-    if (selectedLevel !== 'ALL') {
-      data = data.filter(item => item.level === selectedLevel);
-    }
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
       data = data.filter(item => 
@@ -28,7 +24,7 @@ function App() {
       );
     }
     return data;
-  }, [selectedLevel, searchQuery]);
+  }, [searchQuery]);
 
   const handleSwipeLeft = () => {
     if (currentIndex < filteredData.length - 1) {
@@ -44,7 +40,7 @@ function App() {
 
   useEffect(() => {
     setCurrentIndex(0);
-  }, [selectedLevel, searchQuery]);
+  }, [searchQuery]);
 
   const currentItem = filteredData[currentIndex];
   const activeScene = currentItem?.scene.en || 'ALL';
@@ -65,7 +61,10 @@ function App() {
       {/* Header / Filter Bar */}
       <header className="bg-white/80 backdrop-blur-md px-4 py-3 shadow-sm z-10 flex flex-col gap-3 shrink-0 border-b border-[#EAE7DF]">
         <div className="flex justify-between items-center max-w-sm mx-auto w-full">
-          <h1 className="text-xl font-bold tracking-tight text-[#5C6350]">TPR<span className="text-[#8C8A81] font-medium">Vocab</span></h1>
+          <div className="flex items-center gap-2 min-w-0">
+            <img src={logo} alt="抱抱羊文创" className="w-8 h-8 rounded-lg object-cover shrink-0" />
+            <h1 className="text-lg font-bold tracking-tight text-[#5C6350] truncate">抱抱羊文创</h1>
+          </div>
           <div className="flex gap-2">
             <button 
               onClick={() => setShowFilters(!showFilters)}
@@ -124,21 +123,6 @@ function App() {
                   </button>
                 ))}
               </div>
-
-              {/* Level Filter */}
-              <div className="flex gap-2 pb-1">
-                {['ALL', 'L1', 'L2', 'L3'].map((level) => (
-                  <button
-                    key={level}
-                    onClick={() => setSelectedLevel(level as Level | 'ALL')}
-                    className={`flex-1 py-1.5 rounded-md text-xs font-bold transition-colors ${
-                      selectedLevel === level ? 'bg-[#5C6350] text-white shadow-sm' : 'bg-[#F2F0E9] text-[#8C8A81] hover:bg-[#EAE7DF]'
-                    }`}
-                  >
-                    {level === 'ALL' ? (uiLang === 'zh' ? '全部' : 'ALL') : level}
-                  </button>
-                ))}
-              </div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -190,7 +174,7 @@ function App() {
                         className={`px-3 py-1 rounded-full text-[10px] font-bold text-white uppercase tracking-widest`}
                         style={{ backgroundColor: item.scene.color }}
                       >
-                        {item.level}
+                        {uiLang === 'zh' ? item.scene.zh : item.scene.en}
                       </span>
                     </button>
                   );
