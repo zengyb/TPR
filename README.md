@@ -1,8 +1,5 @@
 # 词汇卡片应用 (Vocabulary Flashcards)
 
-## ⚠️ 为什么直接打开 index.html 没反应？
-这是一个基于 React 和 Vite 构建的现代前端项目。由于浏览器的安全限制（CORS）以及模块化 JavaScript (ES Module) 的要求，**直接双击打开下载后的 `index.html` 是无法运行的**，你会看到一片空白或者报错。必须通过本地服务器运行。
-
 ## 🚀 本地运行指南
 
 1. **安装 Node.js**: 确保你的电脑上安装了 [Node.js](https://nodejs.org/)（包含 npm）。
