@@ -127,7 +127,7 @@ export const vocabularyData: VocabularyItem[] = [
     l3: [
       { en: `Wipe your hands.`, zh: `擦擦手。` },
       { en: `Wipe your face.`, zh: `擦擦脸。` },
-      { en: `Wipe your nose with a tissue.`, zh: `用纸巾擦擦鼻子。` }
+      { en: `Wipe your nose.`, zh: `擦擦鼻子。` }
     ],
     l4: [
       { en: `Wipe your hands after you eat.`, zh: `吃完饭后擦擦手。` },
@@ -328,7 +328,7 @@ export const vocabularyData: VocabularyItem[] = [
     l4: [
       { en: `Crawl through the tunnel and come back.`, zh: `爬过隧道，再爬回来。` },
       { en: `Crawl to the teddy bear under the chair.`, zh: `爬到椅子下面的泰迪熊那里。` },
-      { en: `Crawl under the table when Mommy says, “Go!”`, zh: `妈妈说“开始！”时从桌子下面爬过去。` }
+      { en: `Crawl under the table as quietly as a kitten.`, zh: `像小猫一样悄悄地从桌子下面爬过去。` }
     ]
   },
   {
@@ -341,7 +341,7 @@ export const vocabularyData: VocabularyItem[] = [
     ],
     l4: [
       { en: `Hop to the line and stop.`, zh: `跳到那条线，然后停下。` },
-      { en: `Hop three times when Mommy says, “Go!”`, zh: `妈妈说“开始！”时跳三下。` },
+      { en: `Hop three times and then sit down.`, zh: `跳三下然后坐下。` },
       { en: `Hop like a bunny until you reach the mat.`, zh: `像小兔子一样跳，一直跳到垫子那里。` }
     ]
   },
@@ -398,7 +398,7 @@ export const vocabularyData: VocabularyItem[] = [
     l4: [
       { en: `Pass the cup to Daddy when he asks for it.`, zh: `爸爸要杯子的时候就把杯子递给他。` },
       { en: `Pass the ball to Mommy and then sit down.`, zh: `把球传给妈妈，然后坐下。` },
-      { en: `Pass the red block to me when I say, “Go!”`, zh: `我说“开始！”时把红色积木递给我。` }
+      { en: `Pass the red block to Daddy, then bring me the blue one.`, zh: `把红色积木递给爸爸，然后把蓝色积木拿给我。` }
     ]
   },
   {
@@ -494,7 +494,7 @@ export const vocabularyData: VocabularyItem[] = [
       { en: `Stomp on the floor.`, zh: `在地板上跺脚。` }
     ],
     l4: [
-      { en: `Stomp three times when Mommy says, “Go!”`, zh: `妈妈说“开始！”时跺三下脚。` },
+      { en: `Stomp your feet three times, then clap your hands.`, zh: `跺三下脚，然后拍拍手。` },
       { en: `Stomp your feet and then freeze.`, zh: `跺跺脚，然后定住不动。` },
       { en: `Stomp on the floor when you hear the drum.`, zh: `听到鼓声就在地板上跺脚。` }
     ]
@@ -594,7 +594,7 @@ export const vocabularyData: VocabularyItem[] = [
     l4: [
       { en: `Blow on the soup before you taste it.`, zh: `喝汤前先吹一吹。` },
       { en: `Blow gently to make a big bubble.`, zh: `轻轻吹一个大泡泡。` },
-      { en: `Blow out the candle when Mommy says, “Go!”`, zh: `妈妈说“开始！”时就吹灭蜡烛。` }
+      { en: `Blow out the candle after we sing the birthday song.`, zh: `唱完生日歌之后把蜡烛吹灭。` }
     ]
   },
   {
@@ -719,7 +719,7 @@ export const vocabularyData: VocabularyItem[] = [
     ],
     l4: [
       { en: `Open the book and turn on the lamp.`, zh: `把书翻开，然后打开台灯。` },
-      { en: `Open the box when Mommy says, “Go!”`, zh: `妈妈说“开始！”时就打开盒子。` },
+      { en: `Open the little box and take out the ball inside.`, zh: `打开小盒子，把里面的球拿出来。` },
       { en: `Open the window before we read the story.`, zh: `读故事前先打开窗户。` }
     ]
   },
@@ -756,7 +756,7 @@ export const vocabularyData: VocabularyItem[] = [
     l2: { en: `Smile at Mommy!`, zh: `对妈妈笑一笑！` },
     l3: [
       { en: `Give me a smile.`, zh: `对我笑一笑。` },
-      { en: `Smile for the camera.`, zh: `对着相机笑一笑。` },
+      { en: `Smile at the camera.`, zh: `对着相机笑一笑。` },
       { en: `Smile big.`, zh: `露出大大的笑容。` }
     ],
     l4: [
@@ -789,7 +789,7 @@ export const vocabularyData: VocabularyItem[] = [
     ],
     l4: [
       { en: `Turn off the light before you go to bed.`, zh: `睡觉前先关灯。` },
-      { en: `Turn off the music when Mommy says, “Stop!”`, zh: `妈妈说“停！”时就关上音乐。` },
+      { en: `Turn off the music when Mommy says, “Stop!”`, zh: `妈妈说“停！”时就关掉音乐。` },
       { en: `Turn off the fan when you leave the room.`, zh: `离开房间时关上风扇。` }
     ]
   },
@@ -803,7 +803,7 @@ export const vocabularyData: VocabularyItem[] = [
     ],
     l4: [
       { en: `Turn on the light before you start reading.`, zh: `开始读书前先开灯。` },
-      { en: `Turn on the music when Mommy says, “Go!”`, zh: `妈妈说“开始！”时就打开音乐。` },
+      { en: `Turn on the music as soon as you are ready to dance.`, zh: `准备好跳舞就立刻把音乐打开。` },
       { en: `Turn on the fan if you feel hot.`, zh: `觉得热就打开风扇。` }
     ]
   },
@@ -902,7 +902,7 @@ export const vocabularyData: VocabularyItem[] = [
     l4: [
       { en: `Climb the stairs with Mommy.`, zh: `和妈妈一起爬楼梯。` },
       { en: `Climb onto the mat and sit down.`, zh: `爬到垫子上，坐下。` },
-      { en: `Climb up the ladder when Mommy says, “Go!”`, zh: `妈妈说“开始！”时往上爬梯子。` }
+      { en: `Climb up the ladder, then slide down the slide.`, zh: `爬上爬梯然后从滑梯上滑下来。` }
     ]
   },
   {
@@ -957,7 +957,7 @@ export const vocabularyData: VocabularyItem[] = [
     ],
     l4: [
       { en: `Jump over the line three times.`, zh: `跳过这条线三次。` },
-      { en: `Jump to Mommy when I say, “Go!”`, zh: `我说“开始！”时跳到妈妈这里。` },
+      { en: `Jump to Mommy and then give her a hug.`, zh: `跳到妈妈那里然后给她一个拥抱。` },
       { en: `Jump over the blocks without touching them.`, zh: `跳过积木，别碰到它们。` }
     ]
   },
@@ -972,7 +972,7 @@ export const vocabularyData: VocabularyItem[] = [
     l4: [
       { en: `Kick the ball into the goal.`, zh: `把球踢进球门。` },
       { en: `Kick the red ball to Daddy.`, zh: `把红球踢给爸爸。` },
-      { en: `Kick the ball when I say, “Go!”`, zh: `我说“开始！”时就踢球。` }
+      { en: `Kick the ball past the chair and straight into the goal.`, zh: `把球踢过椅子，直接踢进球门。` }
     ]
   },
   {
@@ -1042,7 +1042,7 @@ export const vocabularyData: VocabularyItem[] = [
     l4: [
       { en: `Run to Mommy when she calls you.`, zh: `妈妈叫你的时候就跑过去。` },
       { en: `Run around the chair three times.`, zh: `绕着椅子跑三圈。` },
-      { en: `Run to the door and come back when I say, “Go!”`, zh: `我说“开始！”时跑到门口再跑回来。` }
+      { en: `Run to the door and come back to Mommy.`, zh: `跑到门口再跑回到妈妈这里。` }
     ]
   },
   {
@@ -1069,7 +1069,7 @@ export const vocabularyData: VocabularyItem[] = [
     ],
     l4: [
       { en: `Spin around three times and then walk forward.`, zh: `转三圈，然后向前走。` },
-      { en: `Spin the wheel when Mommy says, “Go!”`, zh: `妈妈说“开始！”时转动轮子。` },
+      { en: `Spin the wheel until the arrow points to yellow.`, zh: `转动转盘，直到箭头指到黄色。` },
       { en: `Spin the top and watch it move.`, zh: `转陀螺，看它转。` }
     ]
   },
@@ -1084,7 +1084,7 @@ export const vocabularyData: VocabularyItem[] = [
     l4: [
       { en: `Splash in the water three times.`, zh: `在水里溅三下水花。` },
       { en: `Splash with your hands, and count to three.`, zh: `用手拍水，并数到三。` },
-      { en: `Splash the water when Mommy says, “Go!”`, zh: `妈妈说“开始！”时就拍出水花。` }
+      { en: `Splash in the puddles with your rain boots on.`, zh: `穿上雨靴，在小水坑里踩水花。` }
     ]
   },
   {
@@ -1112,7 +1112,7 @@ export const vocabularyData: VocabularyItem[] = [
     l4: [
       { en: `Throw the red ball to Mommy.`, zh: `把红球扔给妈妈。` },
       { en: `Throw the ball into the basket three times.`, zh: `把球扔进筐里三次。` },
-      { en: `Throw the ball when I say, “Go!”`, zh: `我说“开始！”时就扔球。` }
+      { en: `Throw the ball into the box, then go and get it.`, zh: `把球扔进盒子里，然后过去把它拿回来。` }
     ]
   },
   {
@@ -1124,7 +1124,7 @@ export const vocabularyData: VocabularyItem[] = [
       { en: `Tickle my hand.`, zh: `挠挠我的手心。` }
     ],
     l4: [
-      { en: `Tickle Mommy when she says, “Go!”`, zh: `妈妈说“开始！”时挠她痒痒。` },
+      { en: `Tickle Daddy's tummy, then run away.`, zh: `挠挠爸爸的肚子，然后赶紧跑开。` },
       { en: `Tickle Teddy and then give him a hug.`, zh: `挠挠泰迪痒痒，再抱抱它。` },
       { en: `Tickle my hand three times and stop.`, zh: `挠我的手心三下，然后停下。` }
     ]
@@ -1224,7 +1224,7 @@ export const vocabularyData: VocabularyItem[] = [
     l4: [
       { en: `Mop the floor after the water spills.`, zh: `水洒了以后拖地。` },
       { en: `Mop the kitchen floor before dinner.`, zh: `晚饭前拖厨房的地板。` },
-      { en: `Mop the wet floor carefully so nobody slips.`, zh: `小心地拖湿地，别让人滑倒。` }
+      { en: `Mop the floor and put the mop away when you're done.`, zh: `拖完地后，把拖把收起来。` }
     ]
   },
   {
@@ -1252,7 +1252,7 @@ export const vocabularyData: VocabularyItem[] = [
     l4: [
       { en: `Pick up the toys from the floor.`, zh: `把地上的玩具捡起来。` },
       { en: `Pick up three blocks and put them in the box.`, zh: `捡起三块积木，放进盒子里。` },
-      { en: `Pick up the book after you finish reading.`, zh: `读完书后把书捡起来。` }
+      { en: `Pick up all the toys on the floor before bedtime.`, zh: `睡觉前把地板上的玩具都捡起来。` }
     ]
   },
   {
@@ -1306,7 +1306,7 @@ export const vocabularyData: VocabularyItem[] = [
       { en: `Sort the books.`, zh: `把书分类。` }
     ],
     l4: [
-      { en: `Sort the blocks by color, then put in a box.`, zh: `按颜色给积木分类，然后放到盒子里。` },
+      { en: `Sort the blocks by color, and put them in the box.`, zh: `按颜色给积木分类，然后放到盒子里。` },
       { en: `Sort the toys into two groups.`, zh: `把玩具分成两堆。` },
       { en: `Sort the books and put them on the shelf.`, zh: `把书分好类，放到书架上。` }
     ]
@@ -1364,7 +1364,7 @@ export const vocabularyData: VocabularyItem[] = [
     l4: [
       { en: `Throw away the trash after eating.`, zh: `吃完后把垃圾扔掉。` },
       { en: `Throw away the paper when you finish drawing.`, zh: `画完画就把纸扔掉。` },
-      { en: `Throw the empty box away before you clean the table.`, zh: `擦桌子前把空盒子扔掉。` }
+      { en: `Throw the empty box away before you clean the table.`, zh: `收拾桌子之前，先把空盒子扔掉。` }
     ]
   },
   {
