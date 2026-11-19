@@ -1,5 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { vocabularyData, SCENES } from './data/vocabulary';
+import { mediaMap } from './data/mediaMap';
+import { preloadImageWithRetry } from './lib/imagePreloader';
+import { audioManager } from './lib/audioManager';
 import { VocabularyCard } from './components/VocabularyCard';
 import logo from './assets/logo.jpg';
 import { List, Play, Search, Languages, Filter } from 'lucide-react';
@@ -44,6 +47,76 @@ function App() {
 
   const currentItem = filteredData[currentIndex];
   const activeScene = currentItem?.scene.en || 'ALL';
+
+  // 当前卡片音频优先预加载，相邻卡片图片与音频随后预加载
+  useEffect(() => {
+    if (showIndex) return;
+
+    const current = filteredData[currentIndex];
+    if (!current) return;
+
+    const neighborItems = [
+      filteredData[currentIndex - 1],
+      filteredData[currentIndex + 1],
+    ].filter(item => item !== undefined);
+
+    const currentMedia = mediaMap[current.word.toLowerCase()];
+    const neighborMedia = neighborItems
+      .map(item => mediaMap[item.word.toLowerCase()])
+      .filter(media => media !== undefined);
+
+    // 第一阶段：当前卡片音频，保证点击时已就绪
+    currentMedia?.audioUrls?.forEach(url => {
+      void audioManager.preload(url);
+    });
+
+    // 相邻卡片图片立即预加载
+    neighborMedia.forEach(media => {
+      if (media?.imageUrl) {
+        void preloadImageWithRetry(media.imageUrl).catch(() => {
+          // 单张预加载失败不影响当前卡片
+        });
+      }
+    });
+
+    // 第二阶段：相邻卡片音频在浏览器空闲时预加载
+    let cancelled = false;
+    let idleId: number | null = null;
+    const idleWindow = window as Window & {
+      requestIdleCallback?: (
+        callback: () => void,
+        options?: { timeout: number }
+      ) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+
+    const loadNeighborAudio = () => {
+      if (cancelled) return;
+      neighborMedia.forEach(media => {
+        media?.audioUrls?.forEach(url => {
+          void audioManager.preload(url);
+        });
+      });
+    };
+
+    if (typeof idleWindow.requestIdleCallback === 'function') {
+      idleId = idleWindow.requestIdleCallback(loadNeighborAudio, {
+        timeout: 2000,
+      });
+    } else {
+      idleId = window.setTimeout(loadNeighborAudio, 600);
+    }
+
+    return () => {
+      cancelled = true;
+      if (idleId === null) return;
+      if (typeof idleWindow.cancelIdleCallback === 'function') {
+        idleWindow.cancelIdleCallback(idleId);
+      } else {
+        window.clearTimeout(idleId);
+      }
+    };
+  }, [currentIndex, filteredData, showIndex]);
 
   const jumpToScene = (sceneEn: string) => {
     if (sceneEn === 'ALL') {

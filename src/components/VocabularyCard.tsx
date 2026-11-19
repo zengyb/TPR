@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { ArrowLeftRight, Square, Volume2 } from 'lucide-react';
 import { Sentence, VocabularyItem } from '../types';
 import { mediaMap } from '../data/mediaMap';
+import { invalidateImage, preloadImageWithRetry } from '../lib/imagePreloader';
 import { useAudioPlayer } from '../hooks/useAudioPlayer';
 
 interface VocabularyCardProps {
@@ -98,6 +99,7 @@ const AudioArea: React.FC<AudioAreaProps> = ({
 export const VocabularyCard: React.FC<VocabularyCardProps> = ({ item, onSwipeLeft, onSwipeRight, uiLang }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
+  const [imageAttempt, setImageAttempt] = useState(0);
   const { activeId, progress, toggle, stop } = useAudioPlayer();
 
   // Lookup external media resources based on the word key
@@ -108,8 +110,20 @@ export const VocabularyCard: React.FC<VocabularyCardProps> = ({ item, onSwipeLef
   useEffect(() => {
     setIsFlipped(false);
     setImageFailed(false);
+    setImageAttempt(0);
     stop();
-  }, [item.id]);
+  }, [item.id, stop]);
+
+  // 当前卡片图片优先预加载；失败由 preloadImageWithRetry 自动重试
+  useEffect(() => {
+    const url = media?.imageUrl;
+    if (!url) return;
+
+    setImageFailed(false);
+    void preloadImageWithRetry(url).catch(() => {
+      // 最终失败由 <img> 的 onError 与重试按钮兜底
+    });
+  }, [item.id, imageAttempt, media?.imageUrl]);
 
   const handleDragEnd = (event: any, info: any) => {
     const swipeThreshold = 50;
@@ -199,11 +213,29 @@ export const VocabularyCard: React.FC<VocabularyCardProps> = ({ item, onSwipeLef
             <div className="w-full flex-1 flex flex-col items-center justify-center group relative my-2 overflow-hidden min-h-[110px]">
               {media?.imageUrl && !imageFailed ? (
                 <img
+                  key={imageAttempt}
                   src={media.imageUrl}
                   alt={item.word}
-                  onError={() => setImageFailed(true)}
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
+                  onError={() => {
+                    invalidateImage(media.imageUrl);
+                    setImageFailed(true);
+                  }}
                   className="max-w-full max-h-full object-contain mix-blend-multiply"
                 />
+              ) : media?.imageUrl ? (
+                <button
+                  type="button"
+                  onClick={event => {
+                    event.stopPropagation();
+                    setImageAttempt(attempt => attempt + 1);
+                  }}
+                  className="text-[11px] font-bold text-[#8C8A81] underline underline-offset-2 px-4 py-2"
+                >
+                  {uiLang === 'zh' ? '图片加载失败，点击重试' : 'Failed to load. Tap to retry'}
+                </button>
               ) : (
                 <>
                   <span className="text-3xl opacity-50">🖼️</span>
