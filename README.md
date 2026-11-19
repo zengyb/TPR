@@ -8,7 +8,7 @@ TPR（Total Physical Response，全身反应教学法）强调先听懂、再用
 
 ## 适合谁
 
-- 2–8 岁处于英语启蒙阶段的孩子
+- 2–12 岁处于英语启蒙阶段的孩子
 - 希望在家进行亲子英语互动的家长
 - 幼儿园、早教机构、英语课堂的律动与指令教学
 - 喜欢用卡片、点读、动作游戏进行学习的家庭
@@ -110,65 +110,3 @@ TPR（Total Physical Response，全身反应教学法）强调先听懂、再用
 
 所有句子均配有中文翻译，方便家长在亲子互动中理解和使用。
 
-## 技术说明
-
-- React 19 + TypeScript + Vite 6
-- Tailwind CSS 4
-- Motion 卡片翻转与切换动画
-- lucide-react 图标
-- 纯静态前端，无后端、无数据库、无账号体系
-- 站点部署在 Cloudflare Pages
-- 图片与音频存放在 Cloudflare R2，通过独立媒体域名访问
-- 音频优先使用 Web Audio 内存播放，并在 iOS、微信等环境中自动回退到 HTMLAudio
-
-## 本地运行
-
-```bash
-npm install
-npm run dev
-```
-
-默认访问地址：`http://localhost:3000`
-
-构建与检查：
-
-```bash
-npm run build
-npm run lint
-```
-
-## 部署
-
-项目通过 GitHub 同步到 Cloudflare Pages：
-
-- 构建命令：`npm run build`
-- 输出目录：`dist`
-- 页面与构建资源由 Cloudflare Pages 托管
-- 图片与音频由 R2 媒体域名 `https://tpr.fastpage.top` 提供
-
-## 项目结构
-
-```text
-src/
-├── App.tsx                 页面框架、目录、搜索、场景筛选
-├── components/
-│   └── VocabularyCard.tsx  卡片正面 / 背面、点读区域、翻卡
-├── data/
-│   ├── vocabulary.ts       100 个词汇、例句、场景与主题色
-│   └── mediaMap.ts         图片与音频地址映射
-├── hooks/
-│   └── useAudioPlayer.ts   播放状态与进度
-├── lib/
-│   ├── audioManager.ts     音频预加载、解码、缓存与播放
-│   └── imagePreloader.ts   图片预加载与重试
-└── types.ts                数据类型定义
-```
-
-## 内容维护
-
-- 词汇、中文释义、L2 / L3 / L4 例句：`src/data/vocabulary.ts`
-- 图片与音频地址：`src/data/mediaMap.ts`
-- 场景名称与主题色：`src/data/vocabulary.ts` 顶部的 `SCENES`
-- 媒体资源存放在 R2 的 `images/` 与 `audio/` 目录，不进入 Git 仓库
-
-性能优化与媒体缓存配置的细节见 [性能优化迭代记录](docs/性能优化迭代记录.md)。
